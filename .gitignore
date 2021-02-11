@@ -1,0 +1,16 @@
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.so
+.project
+.cproject
+CMakeFiles/
+CTestTestfile.cmake
+.settings/
+.DS_Store
+bin/
+lib/
+install_manifest.txt
+*.orig
+third_party/
+Testing/
