@@ -21,10 +21,16 @@ public:
     std::shared_ptr<smpp::SmppClient> client;
 
     SmppClientTest() :
-            endpoint(boost::asio::ip::address_v4::from_string(SMPP_HOST), SMPP_PORT),
-            ios(),
-            socket(std::shared_ptr<boost::asio::ip::tcp::socket>(new boost::asio::ip::tcp::socket(ios))),
             client(std::shared_ptr<smpp::SmppClient>(new smpp::SmppClient(socket))) {
+
+boost::asio::io_service io_service;
+boost::asio::ip::tcp::resolver resolver(io_service);
+boost::asio::ip::tcp::resolver::query query(SMPP_HOST, SMPP_PORT);
+boost::asio::ip::tcp::resolver::iterator iter = resolver.resolve(query);
+endpoint = iter->endpoint();
+
+    socket = std::make_shared<boost::asio::ip::tcp::socket>(ios);
+    client = std::make_shared<smpp::SmppClient>(socket);
     }
 
     virtual void SetUp() {

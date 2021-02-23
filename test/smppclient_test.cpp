@@ -43,8 +43,8 @@ TEST_F(SmppClientTest, submit) {
     //      client->setNullTerminateOctetStrings(false);
     //      client->setRegisteredDelivery(smpp::REG_DELIVERY_SMSC_BOTH);
     SmppAddress from("CPPSMPP", smpp::TON_ALPHANUMERIC, smpp::NPI_UNKNOWN);
-    SmppAddress to("4513371337", smpp::TON_INTERNATIONAL, smpp::NPI_E164);
-    string message = "message to send";
+    SmppAddress to("+919899164543", smpp::TON_INTERNATIONAL, smpp::NPI_E164);
+    string message = "Connet check  shlabh sharma";
     client->sendSms(from, to, GsmEncoder::getGsm0338(message));
     client->unbind();
     socket->close();
@@ -55,8 +55,8 @@ TEST_F(SmppClientTest, querySm) {
     socket->connect(endpoint);
     client->bindTransmitter(SMPP_USERNAME, SMPP_PASSWORD);
     SmppAddress from("CPPSMPP", smpp::TON_ALPHANUMERIC, smpp::NPI_UNKNOWN);
-    SmppAddress to("4513371337", smpp::TON_INTERNATIONAL, smpp::NPI_E164);
-    string message = "message to send";
+    SmppAddress to("+919899164543", smpp::TON_INTERNATIONAL, smpp::NPI_E164);
+    string message = "querySM shlabh sharma";
     auto smscResult = client->sendSms(from, to, GsmEncoder::getGsm0338(message));
     string smscId = smscResult.first;
     smpp::QuerySmResult result = client->querySm(smscId, from);
@@ -70,7 +70,7 @@ TEST_F(SmppClientTest, csms) {
     socket->connect(endpoint);
     client->bindTransmitter(SMPP_USERNAME, SMPP_PASSWORD);
     SmppAddress from("CPPSMPP", smpp::TON_ALPHANUMERIC, smpp::NPI_UNKNOWN);
-    SmppAddress to("4513371337", smpp::TON_INTERNATIONAL, smpp::NPI_E164);
+    SmppAddress to("+919411061017", smpp::TON_INTERNATIONAL, smpp::NPI_E164);
 
     // Construct 168 char message
     string message;
@@ -100,7 +100,7 @@ TEST_F(SmppClientTest, tlv) {
     socket->connect(endpoint);
     client->bindTransmitter(SMPP_USERNAME, SMPP_PASSWORD);
     SmppAddress from("CPPSMPP", smpp::TON_ALPHANUMERIC, smpp::NPI_UNKNOWN);
-    SmppAddress to("4513371337", smpp::TON_INTERNATIONAL, smpp::NPI_E164);
+    SmppAddress to("+919899164543", smpp::TON_INTERNATIONAL, smpp::NPI_E164);
     string message = "message to send";
 
     list<TLV> taglist;
@@ -117,7 +117,7 @@ TEST_F(SmppClientTest, tlvExtended) {
     socket->connect(endpoint);
     client->bindTransmitter(SMPP_USERNAME, SMPP_PASSWORD);
     SmppAddress from("CPPSMPP", smpp::TON_ALPHANUMERIC, smpp::NPI_UNKNOWN);
-    SmppAddress to("4513371337", smpp::TON_INTERNATIONAL, smpp::NPI_E164);
+    SmppAddress to("+919899164543", smpp::TON_INTERNATIONAL, smpp::NPI_E164);
 
     string message;
     message.reserve(170);
@@ -147,7 +147,7 @@ TEST_F(SmppClientTest, submitExtended) {
     socket->connect(endpoint);
     client->bindTransmitter(SMPP_USERNAME, SMPP_PASSWORD);
     SmppAddress from("CPPSMPP", smpp::TON_ALPHANUMERIC, smpp::NPI_UNKNOWN);
-    SmppAddress to("4513371337", smpp::TON_INTERNATIONAL, smpp::NPI_E164);
+    SmppAddress to("+919899164543", smpp::TON_INTERNATIONAL, smpp::NPI_E164);
     string message = "message to send";
 
     list<TLV> taglist;
